@@ -13,12 +13,15 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
   accessToken: API_KEY
 }).addTo(map);
 
+// Set asside API link to USGS data
 var link = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson'
 
+// Use D3 to get request API geoJSON data
 d3.json(link, function(data) {
 
     console.log('data: ', data)
 
+    // Itereate through each earthquake and create a circle on the map
     for (var i = 0; i < data.features.length; i++) {
 
         var location = data.features[i].geometry
@@ -46,6 +49,7 @@ d3.json(link, function(data) {
         }).bindPopup('<h2>' + properties.place + '</h2>').addTo(map)
     };
 
+    // Create legend
     var legend = L.control({
         position: 'topright'
     });
