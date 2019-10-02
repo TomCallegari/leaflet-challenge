@@ -46,7 +46,7 @@ d3.json(link, function(data) {
             color: color,
             fillColor: color,
             radius: properties.mag * 20000
-        }).bindPopup('<h2>' + properties.place + '</h2>').addTo(map)
+        }).bindPopup('<h2>' + properties.place + '</h2><br><h3>Magnitude: ' + properties.mag + '</h3>').addTo(map)
     };
 
     // Create legend
